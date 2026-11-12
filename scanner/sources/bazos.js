@@ -34,7 +34,7 @@ function makeSource({ id, name, flag, base, currency, lang }) {
           negotiable: /dohodou|dohoda|v texte|v textu|do negocjacji|negocj|vb|verhandl/i.test(priceText),
           url: href.startsWith('http') ? href : base + href,
           image: img.attr('src') || null,
-          location: clean($el.find('.inzeratylok').text()),
+          location: clean(($el.find('.inzeratylok').html() || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '')),
           views: /\d/.test(viewsText) ? Number(viewsText.replace(/\D/g, '')) : null,
           postedAt: dateM ? new Date(Date.UTC(+dateM[3], +dateM[2] - 1, +dateM[1])).toISOString() : null,
         });
