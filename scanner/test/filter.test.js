@@ -103,3 +103,16 @@ test('реалістична ціна і не договірна', async () => {
   assert.equal(postedDate({ postedAt: '2026-11-01T08:00:00Z' }, now).toISOString().slice(0, 10), '2026-11-01');
   assert.equal(postedDate({}, now), null);
 });
+
+test('інші мови Європи', async () => {
+  const { isNegotiable } = await import('../lib/filter.js');
+  assert.deepEqual(ok('Impastatrice a spirale Diosna SP 24'), { ok: true, brand: 'Diosna' });
+  assert.deepEqual(ok('Amasadora Kemper SP 25'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Hnetač Kemper SP 15'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Malaxor aluat Kemper'), { ok: true, brand: 'Kemper' });
+  assert.equal(ok('Cerco impastatrice Diosna').ok, false);
+  assert.equal(ok('Ricambi Diosna SP 24').ok, false);
+  assert.equal(ok('Kemper Profiler Stage come nuovo').ok, false);
+  assert.equal(isNegotiable({ priceText: '900 € trattabili', title: 'Diosna' }, config), true);
+  assert.equal(isNegotiable({ priceText: 'Dohodou', title: 'Diosna' }, config), true);
+});

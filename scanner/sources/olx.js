@@ -39,3 +39,6 @@ function makeSource({ id, name, flag, base, currency, lang }) {
 
 export const olxPl = makeSource({ id: 'olx-pl', name: 'OLX.pl', flag: '🇵🇱', base: 'https://www.olx.pl', currency: 'PLN', lang: 'pl-PL,pl;q=0.9' });
 export const olxUa = makeSource({ id: 'olx-ua', name: 'OLX.ua', flag: '🇺🇦', base: 'https://www.olx.ua', currency: 'UAH', lang: 'uk-UA,uk;q=0.9' });
+export const olxRo = makeSource({ id: 'olx-ro', name: 'OLX.ro', flag: '🇷🇴', base: 'https://www.olx.ro', currency: 'RON', lang: 'ro-RO,ro;q=0.9' });
+export const olxPt = makeSource({ id: 'olx-pt', name: 'OLX.pt', flag: '🇵🇹', base: 'https://www.olx.pt', currency: 'EUR', lang: 'pt-PT,pt;q=0.9' });
+export const olxBg = makeSource({ id: 'olx-bg', name: 'OLX.bg', flag: '🇧🇬', base: 'https://www.olx.bg', currency: 'EUR', lang: 'bg-BG,bg;q=0.9' });
