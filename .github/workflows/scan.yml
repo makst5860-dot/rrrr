@@ -1,0 +1,64 @@
+name: Пошук тістомісів
+
+on:
+  schedule:
+    # кожні 10 хв + випадкова пауза 0–4 хв нижче → перевірки у випадковий час
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Детальний лог (без сповіщень і без збереження)'
+        type: boolean
+        default: false
+      test_push:
+        description: 'Надіслати тестове сповіщення на iPhone'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Випадкова пауза
+        if: github.event_name == 'schedule'
+        run: sleep $(( RANDOM % 240 ))
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --omit=dev --no-audit --no-fund
+
+      - name: Пошук і сповіщення
+        run: node scanner/index.js
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTIONS: ${{ secrets.PUSH_SUBSCRIPTIONS }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          DEBUG: ${{ inputs.debug }}
+          TEST_PUSH: ${{ inputs.test_push }}
+
+      - name: Зберегти знайдене
+        if: ${{ !inputs.debug }}
+        run: |
+          git config user.name "tistomis-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs/data
+          if git diff --cached --quiet; then echo "Без змін"; exit 0; fi
+          git commit -q -m "Оновлення оголошень"
+          for i in 1 2 3; do
+            git pull -q --rebase && git push -q && exit 0
+            sleep $(( 5 * i ))
+          done
+          exit 1

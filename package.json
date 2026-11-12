@@ -1,0 +1,18 @@
+{
+  "name": "tistomis-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Пошук вживаних тістомісів Kemper / Diosna до 1500 € зі сповіщеннями на iPhone",
+  "scripts": {
+    "scan": "node scanner/index.js",
+    "test": "node --test scanner/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "web-push": "^3.6.7"
+  }
+}

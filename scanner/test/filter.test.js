@@ -1,0 +1,52 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { buildMatcher, priceOk } from '../lib/filter.js';
+import { parsePrice } from '../lib/price.js';
+import { toEur } from '../lib/fx.js';
+
+const config = JSON.parse(readFileSync(new URL('../../config.json', import.meta.url)));
+const classify = buildMatcher(config);
+const ok = (title, description = '') => classify({ title, description });
+
+test('ціни', () => {
+  assert.equal(parsePrice('1.200 € VB'), 1200);
+  assert.equal(parsePrice('€ 1.250,-'), 1250);
+  assert.equal(parsePrice('950 €'), 950);
+  assert.equal(parsePrice('1 450,50 €'), 1450);
+  assert.equal(parsePrice('4 500 zł'), 4500);
+  assert.equal(parsePrice('Zu verschenken'), 0);
+  assert.equal(parsePrice('VB'), null);
+  assert.equal(parsePrice(''), null);
+  assert.equal(toEur(4250, 'PLN', { PLN: 4.25 }), 1000);
+});
+
+test('підходять справжні тістоміси', () => {
+  assert.deepEqual(ok('Diosna SP 24 Spiralkneter'), { ok: true, brand: 'Diosna' });
+  assert.deepEqual(ok('DIOSNA SP12 F'), { ok: true, brand: 'Diosna' });
+  assert.deepEqual(ok('Kemper SP 25 Spiralkneter 400V'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Kemper SP15', 'Teigmenge 15 kg'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Teigknetmaschine Spiralkneter 25kg', 'Marke Kemper, läuft einwandfrei'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Kemper deegmenger'), { ok: true, brand: 'Kemper' });
+  assert.deepEqual(ok('Miesiarka spiralna Diosna'), { ok: true, brand: 'Diosna' });
+  assert.deepEqual(ok('Тістоміс Kemper'), { ok: true, brand: 'Kemper' });
+});
+
+test('відсіюємо зайве', () => {
+  assert.equal(ok('Kemper Profiler Stage').ok, false);
+  assert.equal(ok('Kemper Amp Remote').ok, false);
+  assert.equal(ok('Kemper Ventil DN 20').ok, false);
+  assert.equal(ok('Suche Diosna Spiralkneter').ok, false);
+  assert.equal(ok('Ankauf Bäckereimaschinen Diosna Kemper').ok, false);
+  assert.equal(ok('Kemper Teigteiler Rotomat').ok, false);
+  assert.equal(ok('Diosna Ersatzteil Riemen').ok, false);
+  assert.equal(ok('Spiralkneter 25 kg').ok, false);
+  assert.equal(ok('Spiralkneter 25 kg', 'Marke Sottoriva').ok, false);
+});
+
+test('ліміт ціни', () => {
+  assert.equal(priceOk({ priceEur: 1500 }, config), true);
+  assert.equal(priceOk({ priceEur: 1501 }, config), false);
+  assert.equal(priceOk({ priceEur: 0 }, config), true);
+  assert.equal(priceOk({ priceEur: null }, config), false);
+});
