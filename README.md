@@ -5,10 +5,10 @@
 ```
 GitHub Actions (≈48 разів на добу, нерівні проміжки 12–46 хв)
    └─ scanner/ → Kleinanzeigen 🇩🇪 · willhaben 🇦🇹 · Marktplaats 🇳🇱 · 2dehands 🇧🇪
-                 Subito 🇮🇹 · Wallapop 🇪🇸 · Bazoš 🇸🇰 🇨🇿
+                 Subito 🇮🇹 · Wallapop 🇪🇸 · Bazoš 🇸🇰 🇨🇿 🇵🇱 🇦🇹 · tutti 🇨🇭
         ├─ відсіює: гітарні Kemper Profiler, вентилі Kemper, кемпери, «куплю/suche», запчастини
         ├─ ціна 300–1500 € і НЕ договірна (VB, Verhandlungsbasis, trattabile, dohodou…)
-        ├─ мало переглядів (≤ 100) або, якщо лічильника немає, оголошення не старше 3 днів
+        ├─ мало переглядів (≤ 10) або, якщо лічильника немає, оголошення не старше 3 днів
         ├─ нове? → сповіщення в застосунок ntfy на iPhone (з фото і кнопкою «Відкрити оголошення»)
         └─ журнал: data/listings.json
 ```

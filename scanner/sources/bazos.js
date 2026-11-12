@@ -30,8 +30,8 @@ function makeSource({ id, name, flag, base, currency, lang }) {
           description: clean($el.find('.popis').text()).slice(0, 400),
           priceText,
           priceAmount: parsePrice(priceText),
-          currency: /kč|czk/i.test(priceText) ? 'CZK' : currency,
-          negotiable: /dohodou|dohoda|v texte|v textu/i.test(priceText),
+          currency: /kč|czk/i.test(priceText) ? 'CZK' : /zł|pln/i.test(priceText) ? 'PLN' : /€|eur/i.test(priceText) ? 'EUR' : currency,
+          negotiable: /dohodou|dohoda|v texte|v textu|do negocjacji|negocj|vb|verhandl/i.test(priceText),
           url: href.startsWith('http') ? href : base + href,
           image: img.attr('src') || null,
           location: clean($el.find('.inzeratylok').text()),
@@ -46,3 +46,5 @@ function makeSource({ id, name, flag, base, currency, lang }) {
 
 export const bazosSk = makeSource({ id: 'bazos-sk', name: 'Bazoš.sk', flag: '🇸🇰', base: 'https://www.bazos.sk', currency: 'EUR', lang: 'sk-SK,sk;q=0.9' });
 export const bazosCz = makeSource({ id: 'bazos-cz', name: 'Bazoš.cz', flag: '🇨🇿', base: 'https://www.bazos.cz', currency: 'CZK', lang: 'cs-CZ,cs;q=0.9' });
+export const bazosPl = makeSource({ id: 'bazos-pl', name: 'Bazoš.pl', flag: '🇵🇱', base: 'https://www.bazos.pl', currency: 'PLN', lang: 'pl-PL,pl;q=0.9' });
+export const bazosAt = makeSource({ id: 'bazos-at', name: 'Bazoš.at', flag: '🇦🇹', base: 'https://www.bazos.at', currency: 'EUR', lang: 'de-AT,de;q=0.9' });
