@@ -59,3 +59,31 @@ test('запчастини з Kleinanzeigen відсіюються', () => {
   assert.equal(ok('Schalter passend für Diosna SP 24').ok, false);
   assert.deepEqual(ok('Diosna SP 24 Spiralkneter 400V gebraucht'), { ok: true, brand: 'Diosna' });
 });
+
+test('реальні випадки з Kleinanzeigen (12.11.2026)', () => {
+  const no = [
+    'Zeitschaltuhr / Steuerung Knetmaschine Kemper',
+    'Knetmaschine, IBIS/Vitalback,Spiralkneter,Kneter MS 340 n.Kemper',
+    'Reibrad Bandage Kemper Spiralkneter ausfahrbar SP 75a - SP 150a',
+    'Reibrad Bandage Diosna Spiralkneter ausfahrbar 160-240 Kneter NEU',
+    'Wendelkneter, Knetmaschine, IBIS / Vitalback MK 340 (n. Diosna)',
+    'Teigkneter Hubkneter 2 Gang Eberhardt (kein Kemper, Diosna)',
+    'Elektromotor Bottichantrieb Kemper Kneter',
+    'Kemper Kneter Zeitrelais',
+    'Arretier- Messingbolzen Kemper Spiralkneter Kesselwagen SP125-150',
+    'Knethaken Kemper SP30',
+    'Aufnahme für Diosna Kemper Hebekipper Bäckerei',
+  ];
+  for (const t of no) assert.equal(ok(t).ok, false, t);
+  const yes = [
+    ['Spiralkneter Kemper', 'Kemper'],
+    ['Diosna SP200D Knetmaschine,Spiralkneter, Top Zustand', 'Diosna'],
+    ['DIOSNA (Boku) RS 40 CS Planetrührmaschine', 'Diosna'],
+    ['Diosna S120 2G Hubkneter Hubknetmaschine Teigkneter', 'Diosna'],
+    ['Diosna Hubkneter SP120', 'Diosna'],
+    ['Hubknetmaschine von Diosna 120 kg', 'Diosna'],
+    ['Diosna S120 armkneder - Professionele deegmachine', 'Diosna'],
+    ['Diosna SP 24 Spiralkneter mit neuem Motor', 'Diosna'],
+  ];
+  for (const [t, brand] of yes) assert.deepEqual(ok(t), { ok: true, brand }, t);
+});
