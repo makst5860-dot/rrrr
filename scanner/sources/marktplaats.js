@@ -23,6 +23,7 @@ function makeSource({ id, name, flag, base, lang }) {
           description: l.description || l.categorySpecificDescription || '',
           priceText: priceAmount != null ? `€ ${priceAmount}` : (p.priceType || ''),
           priceAmount,
+          negotiable: ['MIN_BID', 'FAST_BID', 'SEE_DESCRIPTION', 'NOTK'].includes(p.priceType),
           currency: 'EUR',
           url: l.vipUrl?.startsWith('http') ? l.vipUrl : base + (l.vipUrl || `/${l.itemId}`),
           image,
@@ -31,6 +32,18 @@ function makeSource({ id, name, flag, base, lang }) {
         };
       });
       return { items };
+    },
+
+    // «123x bekeken» / «vues» на сторінці оголошення
+    async details(item) {
+      const html = await get(item.url, { lang });
+      const patterns = [/"viewCount"\s*:\s*(\d+)/, /"views"\s*:\s*(\d+)/, /(\d[\d.]*)\s*x\s*bekeken/i, /(\d[\d.]*)\s*keer\s*bekeken/i, /bekeken[^\d<]{0,20}(\d[\d.]*)/i, /(\d[\d.]*)\s*(?:fois\s*)?vues?\b/i];
+      for (const re of patterns) {
+        const m = html.match(re);
+        if (m) return { views: Number(m[1].replace(/\./g, '')) };
+      }
+      const i = html.search(/bekeken|vues?\b|viewCount/i);
+      return { views: null, raw: i >= 0 ? html.slice(Math.max(0, i - 200), i + 200).replace(/\s+/g, ' ') : `len=${html.length}` };
     },
   };
 }

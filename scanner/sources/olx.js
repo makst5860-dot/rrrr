@@ -24,6 +24,7 @@ function makeSource({ id, name, flag, base, currency, lang }) {
           description: String(o.description || '').replace(/<[^>]+>/g, ' ').slice(0, 600),
           priceText: v.label || '',
           priceAmount,
+          negotiable: Boolean(v.negotiable || v.arranged),
           currency: v.currency || currency,
           url: o.url,
           image: photo ? photo.replace('{width}', '400').replace('{height}', '300') : null,

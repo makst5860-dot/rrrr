@@ -3,7 +3,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SOURCES } from './sources/index.js';
-import { buildMatcher, priceOk } from './lib/filter.js';
+import { buildMatcher, priceOk, isNegotiable, postedDate } from './lib/filter.js';
 import { loadRates, toEur } from './lib/fx.js';
 import { jitter, shuffle } from './lib/http.js';
 import { makeNotifier, messageFor, summaryMessage, formatEur } from './lib/notify.js';
@@ -93,8 +93,10 @@ async function main() {
   for (const [id, r] of results) {
     const src = SOURCES[id];
     let relevant = 0;
+    const checked = new Set();
     for (const raw of r.items) {
-      if (matched.has(raw.id)) continue;
+      if (matched.has(raw.id) || checked.has(raw.id)) continue;
+      checked.add(raw.id);
       const verdict = classify(raw);
       const item = {
         ...raw,
@@ -110,6 +112,10 @@ async function main() {
       item.brand = verdict.brand;
       if (!priceOk(item, config)) {
         if (DEBUG) log(`     – ${id} ${item.title.slice(0, 70)} → ціна ${item.priceText || '—'}`);
+        continue;
+      }
+      if (!config.allowNegotiable && isNegotiable(item, config)) {
+        if (DEBUG) log(`     – ${id} ${item.title.slice(0, 70)} → договірна ціна (${item.priceText || '—'})`);
         continue;
       }
       relevant++;
@@ -162,6 +168,50 @@ async function main() {
     if (Date.now() - new Date(ts).getTime() > 180 * 86400_000) delete seenState.seen[id];
   }
   const items = [...byId.values()].sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
+
+  // ---- свіжість: мало переглядів (або, якщо перегляди не видно, — оголошення не старіше N днів)
+  async function freshness(item) {
+    const src = SOURCES[item.source];
+    if (src.details) {
+      try {
+        const d = await src.details(item);
+        if (d.views != null) item.views = d.views;
+        if (DEBUG && d.views == null) log(`     ? перегляди ${item.id}: ${d.raw || '—'}`);
+      } catch (err) {
+        if (DEBUG) log(`     ? перегляди ${item.id}: ПОМИЛКА ${err.message}`);
+      }
+    }
+    if (item.views != null) return item.views <= config.maxViews ? null : `багато переглядів (${item.views})`;
+    const posted = postedDate(item);
+    if (posted && Date.now() - posted.getTime() > config.maxAgeDaysIfNoViews * 86400_000) return `старе оголошення (${item.postedText || item.postedAt})`;
+    return null;
+  }
+
+  if (DEBUG) {
+    log('\nПеревірка лічильника переглядів (по 2 оголошення з кожного сайту):');
+    const bySource = {};
+    for (const item of matched.values()) (bySource[item.source] ||= []).push(item);
+    for (const list of Object.values(bySource)) {
+      for (const item of list.slice(0, 2)) {
+        const why = await freshness(item);
+        log(`  👁 ${item.source} ${item.views ?? '?'} переглядів — ${item.title.slice(0, 50)} → ${why || 'ок'}`);
+      }
+    }
+  }
+
+  const accepted = [];
+  for (const item of fresh) {
+    const why = await freshness(item);
+    if (why) log(`  ✗ ${item.brand} ${formatEur(item.priceEur)} — ${item.title}: ${why}`);
+    else accepted.push(item);
+    await jitter(800, 2000);
+  }
+  for (const item of accepted) {
+    const rec = byId.get(item.id);
+    if (rec && item.views != null) rec.views = item.views;
+  }
+  fresh.length = 0;
+  fresh.push(...accepted);
 
   // ---- сповіщення
   log(`\nНових оголошень: ${fresh.length}`);

@@ -1,6 +1,11 @@
 {
   "maxPriceEur": 1500,
   "includeNoPrice": false,
+  "minPriceEur": 300,
+  "allowNegotiable": false,
+  "negotiableWords": "\\bvb\\b|\\bvhb\\b|verhandlungsbasis|verhandelbar|verhandlung|bieden|\\bnotk\\b|\\bobo\\b|договірн|до обговорення|negocjac|negocjacji",
+  "maxViews": 100,
+  "maxAgeDaysIfNoViews": 3,
   "keepDays": 30,
   "maxIndividualNotifications": 5,
 

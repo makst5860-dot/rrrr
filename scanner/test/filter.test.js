@@ -47,7 +47,7 @@ test('відсіюємо зайве', () => {
 test('ліміт ціни', () => {
   assert.equal(priceOk({ priceEur: 1500 }, config), true);
   assert.equal(priceOk({ priceEur: 1501 }, config), false);
-  assert.equal(priceOk({ priceEur: 0 }, config), true);
+  assert.equal(priceOk({ priceEur: 0 }, config), false); // «безкоштовно» — нереалістично
   assert.equal(priceOk({ priceEur: null }, config), false);
 });
 
@@ -86,4 +86,20 @@ test('реальні випадки з Kleinanzeigen (12.11.2026)', () => {
     ['Diosna SP 24 Spiralkneter mit neuem Motor', 'Diosna'],
   ];
   for (const [t, brand] of yes) assert.deepEqual(ok(t), { ok: true, brand }, t);
+});
+
+test('реалістична ціна і не договірна', async () => {
+  const { isNegotiable, postedDate } = await import('../lib/filter.js');
+  assert.equal(priceOk({ priceEur: 299 }, config), false);
+  assert.equal(priceOk({ priceEur: 300 }, config), true);
+  assert.equal(isNegotiable({ priceText: '1.150 € VB', title: 'Diosna Hubkneter SP120' }, config), true);
+  assert.equal(isNegotiable({ priceText: '900 €', title: 'Spiralkneter Kemper' }, config), false);
+  assert.equal(isNegotiable({ priceText: '€ 1.200', title: 'Diosna SP 24 Preis VB' }, config), true);
+  assert.equal(isNegotiable({ priceText: '€ 800', title: 'Kemper', negotiable: true }, config), true);
+  assert.equal(isNegotiable({ priceText: '1.200 €', title: 'Diosna SP24 Verhandlungsbasis' }, config), true);
+  const now = new Date('2026-11-12T12:00:00Z');
+  assert.equal(postedDate({ postedText: 'Heute, 10:12' }, now).getTime(), now.getTime());
+  assert.equal(postedDate({ postedText: '10.11.2026' }, now).toISOString().slice(0, 10), '2026-11-10');
+  assert.equal(postedDate({ postedAt: '2026-11-01T08:00:00Z' }, now).toISOString().slice(0, 10), '2026-11-01');
+  assert.equal(postedDate({}, now), null);
 });

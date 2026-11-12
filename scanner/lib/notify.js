@@ -6,7 +6,7 @@ const httpUrl = (u) => (typeof u === 'string' && /^https?:\/\//i.test(u) ? u : u
 export function messageFor(item) {
   return {
     title: `${item.brand} · ${formatEur(item.priceEur)}`,
-    message: `${item.title}\n${item.flag} ${item.sourceName}${item.location ? ' · ' + item.location : ''}${httpUrl(item.url) ? '\n' + item.url : ''}`,
+    message: `${item.title}\n${item.flag} ${item.sourceName}${item.location ? ' · ' + item.location : ''}${item.views != null ? `\n👁 ${item.views} переглядів` : ''}${httpUrl(item.url) ? '\n' + item.url : ''}`,
     click: httpUrl(item.url),
     attach: httpUrl(item.image),
     priority: 5,

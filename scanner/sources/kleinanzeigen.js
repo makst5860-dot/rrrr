@@ -53,4 +53,16 @@ export default {
     const sample = items.length ? '' : `len=${html.length} article=${(html.match(/<article/g) || []).length} adid=${(html.match(/data-adid/g) || []).length} ${clean(html.slice(0, 300))}`;
     return { items, blocked, sample };
   },
+
+  // Лічильник переглядів (той самий, що показує сторінка оголошення; запит додає +1 перегляд)
+  async details(item) {
+    const adId = item.id.split(':')[1];
+    const data = await get(`${BASE}/s-vac-inc-get.json?adId=${adId}`, {
+      type: 'json',
+      retries: 1,
+      headers: { referer: item.url, 'x-requested-with': 'XMLHttpRequest' },
+    });
+    const n = Number(data?.numVisits ?? data?.numVisitsStr);
+    return { views: Number.isFinite(n) ? n : null, raw: JSON.stringify(data).slice(0, 200) };
+  },
 };
