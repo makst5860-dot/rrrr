@@ -36,7 +36,7 @@
     "bazos-cz": {"enabled": true, "queries": ["diosna", "kemper"]},
     "bazos-pl": {"enabled": true, "queries": ["diosna", "kemper"]},
     "bazos-at": {"enabled": true, "queries": ["diosna", "kemper"]},
-    "tutti": {"enabled": true, "queries": ["diosna", "kemper"]},
+    "tutti": {"enabled": false, "queries": ["diosna", "kemper"]},
     "olx-ro": {"enabled": false, "queries": ["diosna", "kemper"]},
     "olx-pt": {"enabled": false, "queries": ["diosna", "kemper"]},
     "olx-bg": {"enabled": false, "queries": ["diosna", "kemper"]},

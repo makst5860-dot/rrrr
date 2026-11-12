@@ -5,7 +5,7 @@
 ```
 GitHub Actions (≈48 разів на добу, нерівні проміжки 12–46 хв)
    └─ scanner/ → Kleinanzeigen 🇩🇪 · willhaben 🇦🇹 · Marktplaats 🇳🇱 · 2dehands 🇧🇪
-                 Subito 🇮🇹 · Wallapop 🇪🇸 · Bazoš 🇸🇰 🇨🇿 🇵🇱 🇦🇹 · tutti 🇨🇭
+                 Subito 🇮🇹 · Wallapop 🇪🇸 · Bazoš 🇸🇰 🇨🇿 🇵🇱 🇦🇹
         ├─ відсіює: гітарні Kemper Profiler, вентилі Kemper, кемпери, «куплю/suche», запчастини
         ├─ ціна 300–1500 € і НЕ договірна (VB, Verhandlungsbasis, trattabile, dohodou…)
         ├─ мало переглядів (≤ 10) або, якщо лічильника немає, оголошення не старше 3 днів
@@ -42,7 +42,7 @@ iPhone → **Параметри → Сповіщення → Оголошува�
 - `excludeWords` / `mixerWords` — що відсіювати і що вважати тістомісом;
 - `includeNoPrice` — сповіщати й про оголошення без ціни.
 
-Вимкнені, бо блокують запити із серверів GitHub (HTTP 403): OLX (PL, RO, PT, BG), eBay.de, leboncoin.fr.
+Вимкнені, бо блокують запити із серверів GitHub (HTTP 403): OLX (PL, RO, PT, BG), eBay.de, leboncoin.fr, tutti.ch.
 
 Розклад — `.github/workflows/scan.yml`. Приватний репозиторій на безкоштовному GitHub має 2000 хв Actions на місяць; одна перевірка ≈ 1 хв, тож ~48 на добу вкладаються в ліміт. Частіше — лише з платним планом.
 
