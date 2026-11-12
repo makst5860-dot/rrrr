@@ -1,1 +1,110 @@
-{ "updatedAt": null, "maxPriceEur": 1500, "items": [] }
+{
+ "updatedAt": "2026-11-12T16:46:41.083Z",
+ "maxPriceEur": 1500,
+ "items": [
+  {
+   "id": "ka:2927109036",
+   "source": "kleinanzeigen",
+   "brand": "Kemper",
+   "title": "Spiralkneter Kemper",
+   "priceEur": 900,
+   "priceText": "900 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/spiralkneter-kemper/2927109036-176-2297",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/4e/4e53a0ae-5f48-4f3e-bfd6-2a1765c9f9bd?rule=$_59.AUTO",
+   "location": "06333 Hettstedt",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:1894868499",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Diosna SP200D Knetmaschine,Spiralkneter, Top Zustand",
+   "priceEur": 215,
+   "priceText": "215 € VB",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/diosna-sp200d-knetmaschine-spiralkneter-top-zustand/1894868499-168-1978",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/90/900ef067-5a5b-4e53-80cf-7aab244000d2?rule=$_59.AUTO",
+   "location": "47803 Krefeld",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:3562590058",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "DIOSNA (Boku) RS 40 CS Planetrührmaschine",
+   "priceEur": 1500,
+   "priceText": "1.500 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/diosna-boku-rs-40-cs-planetruehrmaschine/3562590058-176-20297",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/6b/6b26c7e5-a6b6-4a81-8b5d-0f20bdbe6b13?rule=$_59.AUTO",
+   "location": "98587 Steinbach-Hallenberg (Thüringer W)",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:3532528561",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Diosna S120 2G Hubkneter Hubknetmaschine Teigkneter Ton Lehm Stuc",
+   "priceEur": 1450,
+   "priceText": "1.450 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/diosna-s120-2g-hubkneter-hubknetmaschine-teigkneter-ton-lehm-stuc/3532528561-176-4618",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/d1/d1d9f715-300e-4117-83bd-0805dbbbe3fe?rule=$_59.AUTO",
+   "location": "97786 Motten",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:3375010073",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Diosna S35 2G Hubkneter Teigkneter Stuck Tonkneter Hubknetmaschin",
+   "priceEur": 1280,
+   "priceText": "1.280 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/diosna-s35-2g-hubkneter-teigkneter-stuck-tonkneter-hubknetmaschin/3375010073-176-4618",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/01/015457a9-fb10-440b-b76e-b1fb89f459f8?rule=$_59.AUTO",
+   "location": "97786 Motten",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:3555052725",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Diosna Hubkneter SP120",
+   "priceEur": 1150,
+   "priceText": "1.150 € VB",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/diosna-hubkneter-sp120/3555052725-176-9363",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/89/892bd11c-f111-436b-9916-b4e5348adc7a?rule=$_59.AUTO",
+   "location": "79104 Freiburg im Breisgau",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "ka:3472022441",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Hubknetmaschine von Diosna 120 kg",
+   "priceEur": 720,
+   "priceText": "720 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/hubknetmaschine-von-diosna-120-kg/3472022441-168-10423",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/f9/f9c669d8-7553-42a5-9787-67f1b2402b3a?rule=$_59.AUTO",
+   "location": "67304 Eisenberg",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  },
+  {
+   "id": "marktplaats:m2459688979",
+   "source": "marktplaats",
+   "brand": "Diosna",
+   "title": "Diosna S120 armkneder - Professionele deegmachine",
+   "priceEur": 1200,
+   "priceText": "€ 1200",
+   "url": "https://www.marktplaats.nl/v/zakelijke-goederen/horeca-keukenapparatuur/m2459688979-diosna-s120-armkneder-professionele-deegmachine",
+   "image": "https://images.marktplaats.com/api/v1/hz-mp-pro-listing/images/3fe634c0-48a3-482c-b778-762a2dbaa5b0?rule=ecg_mp_eps$_82.jpg",
+   "location": "Amsterdam",
+   "firstSeen": "2026-11-12T16:46:41.083Z",
+   "lastSeen": "2026-11-12"
+  }
+ ]
+}
