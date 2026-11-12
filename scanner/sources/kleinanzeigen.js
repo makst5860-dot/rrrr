@@ -6,6 +6,20 @@ import { parsePrice } from '../lib/price.js';
 const BASE = 'https://www.kleinanzeigen.de';
 const clean = (s) => String(s || '').replace(/\s+/g, ' ').trim();
 
+// для DEBUG: коротко показуємо, як виглядає сторінка, якщо оголошення не знайшлися
+function diagnose(html) {
+  const out = [`len=${html.length}`, `title=${(html.match(/<title>([^<]*)/) || [])[1]}`,
+    `aditem=${(html.match(/aditem/g) || []).length}`, `s-anzeige=${(html.match(/\/s-anzeige\//g) || []).length}`,
+    `adid=${(html.match(/adid/gi) || []).length}`, `keineErg=${/keine Ergebnisse|leider nichts/i.test(html)}`];
+  let i = 0;
+  for (let k = 0; k < 2; k++) {
+    i = html.indexOf('/s-anzeige/', i + 1);
+    if (i < 0) break;
+    out.push(`@${i}: ${html.slice(Math.max(0, i - 700), i + 300)}`);
+  }
+  return out.join(' | ');
+}
+
 export default {
   id: 'kleinanzeigen',
   name: 'Kleinanzeigen',
@@ -35,6 +49,6 @@ export default {
         postedText: clean($el.find('.aditem-main--top--right').text()),
       });
     });
-    return { items, blocked: items.length === 0 && /captcha|zugriff verweigert|access denied/i.test(html), sample: html };
+    return { items, blocked: items.length === 0 && /captcha|zugriff verweigert|access denied/i.test(html), sample: items.length ? '' : diagnose(html) };
   },
 };

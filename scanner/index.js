@@ -52,7 +52,7 @@ async function scanSource(source, queries, ctx) {
       res.items.push(...out.items);
       if (DEBUG) {
         log(`  [${source.id}] «${q}»: ${out.items.length} оголошень${out.blocked ? ' (схоже на блокування)' : ''}`);
-        if (!out.items.length && out.sample) log(`     html: ${out.sample.replace(/\s+/g, ' ').slice(0, 400)}`);
+        if (!out.items.length && out.sample) log(`     html: ${out.sample.replace(/\s+/g, ' ').slice(0, 2500)}`);
       }
     } catch (err) {
       res.errors.push(`«${q}»: ${err.message}`);
