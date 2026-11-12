@@ -8,15 +8,13 @@ const clean = (s) => String(s || '').replace(/\s+/g, ' ').trim();
 
 // для DEBUG: коротко показуємо, як виглядає сторінка, якщо оголошення не знайшлися
 function diagnose(html) {
-  const out = [`len=${html.length}`, `title=${(html.match(/<title>([^<]*)/) || [])[1]}`,
-    `aditem=${(html.match(/aditem/g) || []).length}`, `s-anzeige=${(html.match(/\/s-anzeige\//g) || []).length}`,
-    `adid=${(html.match(/adid/gi) || []).length}`, `keineErg=${/keine Ergebnisse|leider nichts/i.test(html)}`];
-  let i = 0;
-  for (let k = 0; k < 2; k++) {
-    i = html.indexOf('/s-anzeige/', i + 1);
-    if (i < 0) break;
-    out.push(`@${i}: ${html.slice(Math.max(0, i - 700), i + 300)}`);
-  }
+  const out = [`len=${html.length}`, `aditem=${(html.match(/aditem/g) || []).length}`, `adid=${(html.match(/adid/gi) || []).length}`];
+  const snip = (re, picks, before, after) => {
+    const idx = [...html.matchAll(re)].map((m) => m.index);
+    for (const n of picks) if (idx[n] != null) out.push(`<<${re.source}#${n}@${idx[n]}: ${html.slice(Math.max(0, idx[n] - before), idx[n] + after)}>>`);
+  };
+  snip(/adid/gi, [0, 1, 12], 300, 500);
+  snip(/\/s-anzeige\//g, [10, 25], 600, 900);
   return out.join(' | ');
 }
 
