@@ -73,6 +73,14 @@ async function main() {
       tags: ['bread'],
     });
     log(`Тестове сповіщення: ${n ? 'надіслано' : 'не надіслано'}`);
+    // приклад зі справжнім оголошенням із журналу — щоб було видно фото і посилання
+    const example = [...listings.items].sort((a, b) => (a.priceEur ?? 1e9) - (b.priceEur ?? 1e9))[0];
+    if (example) {
+      const src = SOURCES[example.source] || {};
+      const msg = messageFor({ ...example, flag: src.flag || '', sourceName: src.name || example.source });
+      await notifier.send({ ...msg, title: `Приклад · ${msg.title}`, priority: 4 });
+      log(`Приклад надіслано: ${example.title}`);
+    }
   }
 
   // ---- пошук (сайти паралельно, запити до одного сайту — послідовно з випадковими паузами)
