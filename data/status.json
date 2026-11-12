@@ -1,12 +1,12 @@
 {
- "checkedAt": "2026-11-12T16:46:41.083Z",
+ "checkedAt": "2026-11-12T17:51:37.028Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
    "ok": true,
    "found": 32,
-   "matched": 7,
+   "matched": 5,
    "error": null
   },
   "willhaben": {
@@ -20,7 +20,7 @@
    "name": "Marktplaats",
    "ok": true,
    "found": 124,
-   "matched": 1,
+   "matched": 0,
    "error": null
   },
   "2dehands": {
@@ -29,10 +29,38 @@
    "found": 101,
    "matched": 0,
    "error": null
+  },
+  "subito": {
+   "name": "Subito",
+   "ok": true,
+   "found": 2,
+   "matched": 0,
+   "error": null
+  },
+  "wallapop": {
+   "name": "Wallapop",
+   "ok": true,
+   "found": 0,
+   "matched": 0,
+   "error": null
+  },
+  "bazos-sk": {
+   "name": "Bazoš.sk",
+   "ok": true,
+   "found": 45,
+   "matched": 0,
+   "error": null
+  },
+  "bazos-cz": {
+   "name": "Bazoš.cz",
+   "ok": true,
+   "found": 37,
+   "matched": 1,
+   "error": null
   }
  },
  "totals": {
-  "listings": 8,
+  "listings": 9,
   "newThisRun": 0
  }
 }

@@ -1,7 +1,20 @@
 {
- "updatedAt": "2026-11-12T16:46:41.083Z",
+ "updatedAt": "2026-11-12T17:51:37.028Z",
  "maxPriceEur": 1500,
  "items": [
+  {
+   "id": "bazos-cz:225896409",
+   "source": "bazos-cz",
+   "brand": "Diosna",
+   "title": "Hnětač těsta",
+   "priceEur": 1190,
+   "priceText": "29 000 Kč",
+   "url": "https://stroje.bazos.cz/inzerat/225896409/hnetac-testa.php",
+   "image": "https://www.bazos.cz/img/1t/409/225896409.jpg",
+   "location": "Kroměříž768 24",
+   "firstSeen": "2026-11-12T17:51:37.028Z",
+   "lastSeen": "2026-11-12"
+  },
   {
    "id": "ka:2927109036",
    "source": "kleinanzeigen",
