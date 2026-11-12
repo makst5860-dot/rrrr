@@ -5,8 +5,10 @@
 ```
 GitHub Actions (≈48 разів на добу, нерівні проміжки 12–46 хв)
    └─ scanner/ → Kleinanzeigen 🇩🇪 · willhaben 🇦🇹 · Marktplaats 🇳🇱 · 2dehands 🇧🇪
+                 Subito 🇮🇹 · Wallapop 🇪🇸 · Bazoš 🇸🇰 🇨🇿
         ├─ відсіює: гітарні Kemper Profiler, вентилі Kemper, кемпери, «куплю/suche», запчастини
-        ├─ ціна ≤ 1500 €
+        ├─ ціна 300–1500 € і НЕ договірна (VB, Verhandlungsbasis, trattabile, dohodou…)
+        ├─ мало переглядів (≤ 100) або, якщо лічильника немає, оголошення не старше 3 днів
         ├─ нове? → сповіщення в застосунок ntfy на iPhone (з фото і кнопкою «Відкрити оголошення»)
         └─ журнал: data/listings.json
 ```
@@ -33,12 +35,14 @@ iPhone → **Параметри → Сповіщення → Оголошува�
 ## Змінити пошук
 
 Усе в `config.json`:
-- `maxPriceEur` — ліміт ціни;
+- `maxPriceEur` / `minPriceEur` — межі ціни;
+- `allowNegotiable` — дозволити договірну ціну (VB тощо);
+- `maxViews` / `maxAgeDaysIfNoViews` — «свіжість» оголошення;
 - `sources.*.enabled` / `queries` — сайти і пошукові запити;
 - `excludeWords` / `mixerWords` — що відсіювати і що вважати тістомісом;
 - `includeNoPrice` — сповіщати й про оголошення без ціни.
 
-OLX.pl і eBay.de вимкнені: вони блокують запити із серверів GitHub (HTTP 403).
+Вимкнені, бо блокують запити із серверів GitHub (HTTP 403): OLX (PL, RO, PT, BG), eBay.de, leboncoin.fr.
 
 Розклад — `.github/workflows/scan.yml`. Приватний репозиторій на безкоштовному GitHub має 2000 хв Actions на місяць; одна перевірка ≈ 1 хв, тож ~48 на добу вкладаються в ліміт. Частіше — лише з платним планом.
 

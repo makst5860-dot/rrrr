@@ -21,7 +21,7 @@
     }
   ],
   "mixerWords": "spiral|kneter|knetmasch|teigknet|teigmasch|teigmisch|teigmix|teigrühr|mixer|mischer|rührwerk|rührmasch|bäcker|baecker|backstube|deeg|kneed|pétrin|petrin|impastatric|amasadora|miesiark|mieszark|mieszalnik|ciast|тісто|тесто|міксер|миксер|\\bsp\\s?-?\\d{2,3}\\b|\\bspl\\b|\\bspv\\b|hnet|hnět|miesi|malaxor|frământ|framant|amassadeira|amasadeira|kneader|impast|amasad",
-  "excludeWords": "^\\W*(zeitschaltuhr|steuerung|elektromotor|motor|getriebe|kessel|schüssel|deckel|schutzgitter)|relais|reibrad|bandage|antrieb|bolzen|n\\.\\s?(kemper|diosna)|nach (kemper|diosna)|kein (kemper|diosna)|\\((wie|ähnlich|art) |passend für|geeignet für|für diosna|für kemper|\\brad\\b|kesselwagen|knetarm|zahnrad|kugellager|schalter|profiler|\\bamp\\b|verstärker|gitarr|guitar|\\bstage\\b|remote|footswitch|ventil|armatur|sanitär|frosti|teigteiler|rotomat|softstar|rundwirker|wirkmasch|brötchen|ersatzteil|keilriemen|riemen|platine|dichtung|knethaken|spiralhaken|spare ?part|onderde|częś|запчаст|ricamb|recambi|repuest|pièce|piece detach|náhradn|diely|díly|piese|peças|pecas",
+  "excludeWords": "^\\W*(zeitschaltuhr|steuerung|elektromotor|motor|getriebe|kessel|schüssel|deckel|schutzgitter)|relais|reibrad|bandage|antrieb|bolzen|(^|[\\s(])n\\.\\s?(kemper|diosna)|nach (kemper|diosna)|kein (kemper|diosna)|\\((wie|ähnlich|art) |passend für|geeignet für|für diosna|für kemper|\\brad\\b|kesselwagen|knetarm|zahnrad|kugellager|schalter|profiler|\\bamp\\b|verstärker|gitarr|guitar|\\bstage\\b|remote|footswitch|ventil|armatur|sanitär|frosti|teigteiler|rotomat|softstar|rundwirker|wirkmasch|brötchen|ersatzteil|keilriemen|riemen|platine|dichtung|knethaken|spiralhaken|spare ?part|onderde|częś|запчаст|ricamb|recambi|repuest|pièce|piece detach|náhradn|diely|díly|piese|peças|pecas",
   "wantedWords": "(^|\\s)(suche|gesucht|ankauf|kaufe|wir kaufen|zoek|zoeken|gezocht|gevraagd|kupię|kupie|skupuję|skup|куплю|cerco|compro|busco|recherche|achète|achete|koupím|koupim|kúpim|kupim|hledám|hladam|cumpăr|cumpar|caut|procuro|купувам)(\\s|$|[:!,.])",
 
   "sources": {
@@ -31,12 +31,12 @@
     "2dehands": {"enabled": true, "queries": ["diosna", "kemper"]},
     "subito": {"enabled": true, "queries": ["diosna", "impastatrice kemper", "kemper spirale"]},
     "wallapop": {"enabled": true, "queries": ["diosna", "amasadora kemper"]},
-    "leboncoin": {"enabled": true, "queries": ["diosna", "pétrin kemper"]},
+    "leboncoin": {"enabled": false, "queries": ["diosna", "pétrin kemper"]},
     "bazos-sk": {"enabled": true, "queries": ["diosna", "kemper"]},
     "bazos-cz": {"enabled": true, "queries": ["diosna", "kemper"]},
-    "olx-ro": {"enabled": true, "queries": ["diosna", "kemper"]},
-    "olx-pt": {"enabled": true, "queries": ["diosna", "kemper"]},
-    "olx-bg": {"enabled": true, "queries": ["diosna", "kemper"]},
+    "olx-ro": {"enabled": false, "queries": ["diosna", "kemper"]},
+    "olx-pt": {"enabled": false, "queries": ["diosna", "kemper"]},
+    "olx-bg": {"enabled": false, "queries": ["diosna", "kemper"]},
     "olx-pl": {"enabled": false, "queries": ["diosna", "kemper"]},
     "ebay-de": {"enabled": false, "queries": ["diosna", "kemper spiralkneter", "kemper knetmaschine"]},
     "olx-ua": {"enabled": false, "queries": ["diosna", "kemper"]}
