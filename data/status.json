@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-12T17:51:37.028Z",
+ "checkedAt": "2026-11-12T18:06:38.611Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
@@ -57,6 +57,27 @@
    "found": 37,
    "matched": 1,
    "error": null
+  },
+  "bazos-pl": {
+   "name": "Bazoš.pl",
+   "ok": true,
+   "found": 0,
+   "matched": 0,
+   "error": null
+  },
+  "bazos-at": {
+   "name": "Bazoš.at",
+   "ok": true,
+   "found": 0,
+   "matched": 0,
+   "error": null
+  },
+  "tutti": {
+   "name": "tutti.ch",
+   "ok": false,
+   "found": 0,
+   "matched": 0,
+   "error": "«diosna»: HTTP 403"
   }
  },
  "totals": {
