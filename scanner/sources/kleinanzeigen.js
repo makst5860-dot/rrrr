@@ -1,22 +1,11 @@
-// Kleinanzeigen.de (Німеччина) — розбір HTML сторінки пошуку.
+// Kleinanzeigen.de (Німеччина) — розбір HTML сторінки пошуку (розмітка 2026: article[data-adid]).
 import * as cheerio from 'cheerio';
 import { get } from '../lib/http.js';
 import { parsePrice } from '../lib/price.js';
 
 const BASE = 'https://www.kleinanzeigen.de';
 const clean = (s) => String(s || '').replace(/\s+/g, ' ').trim();
-
-// для DEBUG: коротко показуємо, як виглядає сторінка, якщо оголошення не знайшлися
-function diagnose(html) {
-  const out = [`len=${html.length}`, `aditem=${(html.match(/aditem/g) || []).length}`, `adid=${(html.match(/adid/gi) || []).length}`];
-  const snip = (re, picks, before, after) => {
-    const idx = [...html.matchAll(re)].map((m) => m.index);
-    for (const n of picks) if (idx[n] != null) out.push(`<<${re.source}#${n}@${idx[n]}: ${html.slice(Math.max(0, idx[n] - before), idx[n] + after)}>>`);
-  };
-  snip(/adid/gi, [0, 1, 12], 300, 500);
-  snip(/\/s-anzeige\//g, [10, 25], 600, 900);
-  return out.join(' | ');
-}
+const PRICE_RE = /€|\bVB\b|verschenken|tausch/i;
 
 export default {
   id: 'kleinanzeigen',
@@ -27,26 +16,41 @@ export default {
     const html = await get(`${BASE}/s-preis::${maxPrice}/${slug}/k0`);
     const $ = cheerio.load(html);
     const items = [];
-    $('article.aditem, li.ad-listitem article').each((_, el) => {
+    $('article[data-adid]').each((_, el) => {
       const $el = $(el);
       const adId = $el.attr('data-adid');
       const href = $el.attr('data-href') || $el.find('a[href*="/s-anzeige/"]').first().attr('href');
       if (!adId || !href) return;
-      const priceText = clean($el.find('[class*="price-shipping--price"], .aditem-main--middle--price').first().text());
+
+      let ld = {};
+      try { ld = JSON.parse($el.find('script[type="application/ld+json"]').first().text() || '{}'); } catch { /* ignore */ }
+
+      const $title = $el.find('h3 a, h2 a, a.ellipsis').first();
+      const title = clean($title.text()) || clean(ld.title || ld.name);
+      const priceText = clean(
+        $el.find('p').filter((_, p) => PRICE_RE.test($(p).text()) && $(p).text().length < 40).first().text()
+        || $el.find('[class*="price"]').first().text(),
+      );
+      const spans = $el.find('span').map((_, s) => clean($(s).text())).get();
+      const location = spans.find((t) => /^\d{5}\s+\S/.test(t)) || clean($el.find('.aditem-main--top--left').text());
+      const postedText = spans.find((t) => /^(\d{2}\.\d{2}\.\d{4}|Heute|Gestern)/.test(t)) || '';
       const img = $el.find('img').first();
+
       items.push({
         id: `ka:${adId}`,
-        title: clean($el.find('h2 a, a.ellipsis, .text-module-begin').first().text()),
-        description: clean($el.find('.aditem-main--middle--description').text()),
+        title,
+        description: clean($title.closest('h3, h2').next('p').text()) || clean(ld.description).slice(0, 300),
         priceText,
         priceAmount: parsePrice(priceText),
         currency: 'EUR',
         url: href.startsWith('http') ? href : BASE + href,
-        image: img.attr('src') || img.attr('data-src') || $el.find('[data-imgsrc]').attr('data-imgsrc') || null,
-        location: clean($el.find('.aditem-main--top--left').text()),
-        postedText: clean($el.find('.aditem-main--top--right').text()),
+        image: ld.contentUrl || img.attr('src') || img.attr('data-src') || null,
+        location,
+        postedText,
       });
     });
-    return { items, blocked: items.length === 0 && /captcha|zugriff verweigert|access denied/i.test(html), sample: items.length ? '' : diagnose(html) };
+    const blocked = items.length === 0 && /captcha|zugriff verweigert|access denied/i.test(html);
+    const sample = items.length ? '' : `len=${html.length} article=${(html.match(/<article/g) || []).length} adid=${(html.match(/data-adid/g) || []).length} ${clean(html.slice(0, 300))}`;
+    return { items, blocked, sample };
   },
 };

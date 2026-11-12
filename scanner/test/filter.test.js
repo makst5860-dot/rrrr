@@ -50,3 +50,12 @@ test('ліміт ціни', () => {
   assert.equal(priceOk({ priceEur: 0 }, config), true);
   assert.equal(priceOk({ priceEur: null }, config), false);
 });
+
+test('запчастини з Kleinanzeigen відсіюються', () => {
+  assert.equal(ok('Seitliches Rad Diosna Spiralkneter Kesselwagen 120-240 NEU').ok, false);
+  assert.equal(ok('Vorderes Rad Diosna Spiralkneter Kesselwagen 120-240 NEU').ok, false);
+  assert.equal(ok('Diosna 120 Hubkneter, Knetarm').ok, false);
+  assert.equal(ok('Antriebszahnrad Kunststoff 55mm Türkischer Abwieger Teigteil NEU').ok, false);
+  assert.equal(ok('Schalter passend für Diosna SP 24').ok, false);
+  assert.deepEqual(ok('Diosna SP 24 Spiralkneter 400V gebraucht'), { ok: true, brand: 'Diosna' });
+});

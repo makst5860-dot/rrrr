@@ -11,7 +11,7 @@
 
   "mixerWords": "spiral|kneter|knetmasch|teigknet|teigmasch|teigmisch|teigmix|teigrühr|mixer|mischer|rührwerk|rührmasch|bäcker|baecker|backstube|deeg|kneed|pétrin|petrin|impastatric|amasadora|miesiark|mieszark|mieszalnik|ciast|тісто|тесто|міксер|миксер|\\bsp\\s?-?\\d{2,3}\\b|\\bspl\\b|\\bspv\\b",
 
-  "excludeWords": "profiler|\\bamp\\b|verstärker|gitarr|guitar|\\bstage\\b|remote|footswitch|ventil|armatur|sanitär|frosti|teigteiler|rotomat|softstar|rundwirker|wirkmasch|brötchen|ersatzteil|keilriemen|riemen|platine|dichtung|knethaken|spiralhaken|spare ?part|onderde|częś|запчаст",
+  "excludeWords": "passend für|geeignet für|für diosna|für kemper|\\brad\\b|kesselwagen|knetarm|zahnrad|antriebs|kugellager|schalter|profiler|\\bamp\\b|verstärker|gitarr|guitar|\\bstage\\b|remote|footswitch|ventil|armatur|sanitär|frosti|teigteiler|rotomat|softstar|rundwirker|wirkmasch|brötchen|ersatzteil|keilriemen|riemen|platine|dichtung|knethaken|spiralhaken|spare ?part|onderde|częś|запчаст",
 
   "wantedWords": "(^|\\s)(suche|gesucht|ankauf|kaufe|wir kaufen|zoek|zoeken|gezocht|gevraagd|kupię|kupie|skupuję|skup|куплю|куплю)(\\s|$|[:!,.])",
 
@@ -33,11 +33,11 @@
       "queries": ["diosna", "kemper"]
     },
     "olx-pl": {
-      "enabled": true,
+      "enabled": false,
       "queries": ["diosna", "kemper"]
     },
     "ebay-de": {
-      "enabled": true,
+      "enabled": false,
       "queries": ["diosna", "kemper spiralkneter", "kemper knetmaschine"]
     },
     "olx-ua": {
