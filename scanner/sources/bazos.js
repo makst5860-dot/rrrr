@@ -18,7 +18,7 @@ function makeSource({ id, name, flag, base, currency, lang }) {
         const $el = $(el);
         const a = $el.find('h2 a, .nadpis a').first();
         const href = a.attr('href') || '';
-        const adId = href.match(/inzerat\/(\d+)/)?.[1];
+        const adId = href.match(/\/(?:inzerat|ogloszenie|anzeige|inserat|[a-z]+)\/(\d{5,})\//)?.[1];
         if (!adId) return;
         const priceText = clean($el.find('.inzeratycena').text());
         const viewsText = clean($el.find('.inzeratyview').text());
