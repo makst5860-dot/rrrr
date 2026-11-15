@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-15T08:28:53.141Z",
+ "checkedAt": "2026-11-15T16:27:12.032Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
@@ -19,7 +19,7 @@
   "marktplaats": {
    "name": "Marktplaats",
    "ok": true,
-   "found": 124,
+   "found": 125,
    "matched": 0,
    "error": null
   },
@@ -54,7 +54,7 @@
   "bazos-cz": {
    "name": "Bazoš.cz",
    "ok": true,
-   "found": 35,
+   "found": 36,
    "matched": 1,
    "error": null
   },
