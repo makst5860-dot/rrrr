@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-17T08:22:06.206Z",
+ "checkedAt": "2026-11-17T14:39:17.651Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
@@ -19,14 +19,14 @@
   "marktplaats": {
    "name": "Marktplaats",
    "ok": true,
-   "found": 125,
+   "found": 126,
    "matched": 0,
    "error": null
   },
   "2dehands": {
    "name": "2dehands",
    "ok": true,
-   "found": 101,
+   "found": 100,
    "matched": 0,
    "error": null
   },
@@ -54,14 +54,14 @@
   "bazos-cz": {
    "name": "Bazoš.cz",
    "ok": true,
-   "found": 39,
+   "found": 38,
    "matched": 1,
    "error": null
   },
   "bazos-pl": {
    "name": "Bazoš.pl",
    "ok": true,
-   "found": 2,
+   "found": 3,
    "matched": 0,
    "error": null
   },
