@@ -1,7 +1,20 @@
 {
- "updatedAt": "2026-11-20T01:45:29.486Z",
+ "updatedAt": "2026-11-20T09:55:20.564Z",
  "maxPriceEur": 1500,
  "items": [
+  {
+   "id": "wh:1943161931",
+   "source": "willhaben",
+   "brand": "Kemper",
+   "title": "Rührmaschine",
+   "priceEur": 900,
+   "priceText": "€ 900",
+   "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/ruehrmaschine-1943161931/",
+   "image": "https://cache.willhaben.at/mmo/1/194/316/1931_-844936416_hoved.jpg",
+   "location": "8164 Stenzengreith",
+   "firstSeen": "2026-11-20T09:55:20.564Z",
+   "lastSeen": "2026-11-20"
+  },
   {
    "id": "bazos-cz:225896409",
    "source": "bazos-cz",
