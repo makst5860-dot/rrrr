@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-19T19:07:25.591Z",
+ "checkedAt": "2026-11-20T01:45:29.486Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
@@ -54,7 +54,7 @@
   "bazos-cz": {
    "name": "Bazoš.cz",
    "ok": true,
-   "found": 42,
+   "found": 41,
    "matched": 1,
    "error": null
   },
