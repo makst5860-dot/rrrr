@@ -1,11 +1,11 @@
 {
- "checkedAt": "2026-11-21T07:37:07.775Z",
+ "checkedAt": "2026-11-21T16:04:04.746Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
    "ok": true,
-   "found": 34,
+   "found": 36,
    "matched": 5,
    "error": null
   },
