@@ -1,11 +1,11 @@
 {
- "checkedAt": "2026-11-23T03:47:22.801Z",
+ "checkedAt": "2026-11-23T13:44:27.435Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
    "ok": true,
-   "found": 42,
+   "found": 38,
    "matched": 5,
    "error": null
   },
@@ -13,7 +13,7 @@
    "name": "willhaben",
    "ok": true,
    "found": 60,
-   "matched": 1,
+   "matched": 0,
    "error": null
   },
   "marktplaats": {
