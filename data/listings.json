@@ -1,7 +1,20 @@
 {
- "updatedAt": "2026-11-24T01:17:41.187Z",
+ "updatedAt": "2026-11-24T11:08:49.843Z",
  "maxPriceEur": 1500,
  "items": [
+  {
+   "id": "ka:3581135374",
+   "source": "kleinanzeigen",
+   "brand": "Diosna",
+   "title": "Hubarmkneter Diosna Hack u. Teigknetmaschine,",
+   "priceEur": 600,
+   "priceText": "600 €",
+   "url": "https://www.kleinanzeigen.de/s-anzeige/hubarmkneter-diosna-hack-u-teigknetmaschine-/3581135374-176-4402",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/98/98d04eaa-60ff-4727-bdb1-fd58ec0190c9?rule=$_59.AUTO",
+   "location": "34628 Willingshausen",
+   "firstSeen": "2026-11-24T11:08:49.843Z",
+   "lastSeen": "2026-11-24"
+  },
   {
    "id": "wh:1943161931",
    "source": "willhaben",
