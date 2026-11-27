@@ -1,12 +1,12 @@
 {
- "checkedAt": "2026-11-27T09:45:18.480Z",
+ "checkedAt": "2026-11-27T18:06:30.570Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
    "ok": true,
-   "found": 38,
-   "matched": 6,
+   "found": 37,
+   "matched": 5,
    "error": null
   },
   "willhaben": {
@@ -19,7 +19,7 @@
   "marktplaats": {
    "name": "Marktplaats",
    "ok": true,
-   "found": 125,
+   "found": 122,
    "matched": 0,
    "error": null
   },
@@ -47,7 +47,7 @@
   "bazos-sk": {
    "name": "Bazoš.sk",
    "ok": true,
-   "found": 45,
+   "found": 46,
    "matched": 0,
    "error": null
   },
