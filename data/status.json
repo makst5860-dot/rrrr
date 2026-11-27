@@ -1,13 +1,13 @@
 {
- "checkedAt": "2026-11-27T00:14:57.500Z",
+ "checkedAt": "2026-11-27T08:03:13.927Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
-   "ok": true,
-   "found": 37,
-   "matched": 6,
-   "error": null
+   "ok": false,
+   "found": 0,
+   "matched": 0,
+   "error": "«kemper spiralkneter»: HTTP 403"
   },
   "willhaben": {
    "name": "willhaben",
@@ -32,10 +32,10 @@
   },
   "subito": {
    "name": "Subito",
-   "ok": true,
-   "found": 2,
+   "ok": false,
+   "found": 0,
    "matched": 0,
-   "error": null
+   "error": "«impastatrice kemper»: HTTP 403"
   },
   "wallapop": {
    "name": "Wallapop",
@@ -61,7 +61,7 @@
   "bazos-pl": {
    "name": "Bazoš.pl",
    "ok": true,
-   "found": 2,
+   "found": 3,
    "matched": 0,
    "error": null
   },
