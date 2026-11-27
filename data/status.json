@@ -1,13 +1,13 @@
 {
- "checkedAt": "2026-11-27T08:03:13.927Z",
+ "checkedAt": "2026-11-27T09:45:18.480Z",
  "maxPriceEur": 1500,
  "sources": {
   "kleinanzeigen": {
    "name": "Kleinanzeigen",
-   "ok": false,
-   "found": 0,
-   "matched": 0,
-   "error": "«kemper spiralkneter»: HTTP 403"
+   "ok": true,
+   "found": 38,
+   "matched": 6,
+   "error": null
   },
   "willhaben": {
    "name": "willhaben",
@@ -32,10 +32,10 @@
   },
   "subito": {
    "name": "Subito",
-   "ok": false,
-   "found": 0,
+   "ok": true,
+   "found": 2,
    "matched": 0,
-   "error": "«impastatrice kemper»: HTTP 403"
+   "error": null
   },
   "wallapop": {
    "name": "Wallapop",
