@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-27T00:14:57.500Z",
+ "updatedAt": "2026-11-28T01:35:50.895Z",
  "maxPriceEur": 1500,
  "items": [
   {
@@ -13,7 +13,7 @@
    "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/98/98d04eaa-60ff-4727-bdb1-fd58ec0190c9?rule=$_59.AUTO",
    "location": "34628 Willingshausen",
    "firstSeen": "2026-11-24T11:08:49.843Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "wh:1943161931",
@@ -33,13 +33,13 @@
    "source": "bazos-cz",
    "brand": "Diosna",
    "title": "Hnětač těsta",
-   "priceEur": 1186,
+   "priceEur": 1187,
    "priceText": "29 000 Kč",
    "url": "https://stroje.bazos.cz/inzerat/225896409/hnetac-testa.php",
    "image": "https://www.bazos.cz/img/1t/409/225896409.jpg",
    "location": "Kroměříž 768 24",
    "firstSeen": "2026-11-12T17:51:37.028Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "ka:2927109036",
@@ -52,7 +52,7 @@
    "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/4e/4e53a0ae-5f48-4f3e-bfd6-2a1765c9f9bd?rule=$_59.AUTO",
    "location": "06333 Hettstedt",
    "firstSeen": "2026-11-12T16:46:41.083Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "ka:1894868499",
@@ -78,7 +78,7 @@
    "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/6b/6b26c7e5-a6b6-4a81-8b5d-0f20bdbe6b13?rule=$_59.AUTO",
    "location": "98587 Steinbach-Hallenberg (Thüringer W)",
    "firstSeen": "2026-11-12T16:46:41.083Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "ka:3532528561",
@@ -91,7 +91,7 @@
    "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/d1/d1d9f715-300e-4117-83bd-0805dbbbe3fe?rule=$_59.AUTO",
    "location": "97786 Motten",
    "firstSeen": "2026-11-12T16:46:41.083Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "ka:3375010073",
@@ -104,7 +104,7 @@
    "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/01/015457a9-fb10-440b-b76e-b1fb89f459f8?rule=$_59.AUTO",
    "location": "97786 Motten",
    "firstSeen": "2026-11-12T16:46:41.083Z",
-   "lastSeen": "2026-11-27"
+   "lastSeen": "2026-11-28"
   },
   {
    "id": "ka:3555052725",
